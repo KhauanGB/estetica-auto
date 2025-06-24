@@ -1,0 +1,26 @@
+<p>listar-produto works!</p>
+<h2>Produtos Cadastrados</h2>
+
+<a routerLink="/produtos/novo">Novo Produto</a>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Preço</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let produto of produtos">
+      <td>{{ produto.nome }}</td>
+      <td>{{ produto.descricao }}</td>
+      <td>{{ produto.preco | currency:'BRL' }}</td>
+      <td>
+        <a [routerLink]="['/produtos/editar', produto.id]">Editar</a>
+        <button (click)="excluir(produto.id)">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
