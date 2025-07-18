@@ -1,0 +1,15 @@
+<h2>Meus Favoritos</h2>
+<div class="row">
+  <div class="col-md-4" *ngFor="let produto of favoritos">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">{{ produto.nome }}</h5>
+        <p class="card-text">{{ produto.descricao }}</p>
+        <p class="card-text">Preço: R$ {{ produto.preco | number:'1.2-2' }}</p>
+        <button class="btn btn-danger" (click)="remover(produto.id)">
+          <i class="bi bi-trash"></i> Remover
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

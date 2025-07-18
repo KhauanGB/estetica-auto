@@ -1,32 +1,25 @@
+// src/app/services/produto.service.ts
 import { Injectable } from '@angular/core';
 
-import { Produto } from '../model/produto.model';
+export interface Produto {
+  id: number;
+  nome: string;
+  descricao: string;
+  preco: number;
+  imagem: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProdutoService {
-  private produtos: Produto[] = [];
-  private proximoId = 1;
+  private produtos: Produto[] = [
+    { id: 1, nome: 'Cera Automotiva', descricao: 'Brilho intenso', preco: 49.9, imagem: 'assets/cera.jpg' },
+    { id: 2, nome: 'Shampoo Automotivo', descricao: 'Limpeza profunda', preco: 29.9, imagem: 'assets/shampoo.jpg' }
+  ];
 
   listar(): Produto[] {
     return this.produtos;
-  }
-
-  inserir(produto: Produto): void {
-    produto.id = this.proximoId++;
-    this.produtos.push(produto);
-  }
-
-  atualizar(produto: Produto): void {
-    const index = this.produtos.findIndex(p => p.id === produto.id);
-    if (index !== -1) {
-      this.produtos[index] = produto;
-    }
-  }
-
-  excluir(id: number): void {
-    this.produtos = this.produtos.filter(p => p.id !== id);
   }
 
   buscarPorId(id: number): Produto | undefined {

@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}

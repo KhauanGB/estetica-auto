@@ -1,0 +1,57 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" routerLink="/">Estética Auto</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto gap-2">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">
+            <i class="bi bi-house-door-fill"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/produtos">
+            <i class="bi bi-box-seam"></i> Produtos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/usuarios/novo">
+            <i class="bi bi-person-plus-fill"></i> Cadastro
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/favoritos">
+            <i class="bi bi-heart-fill"></i> Favoritos
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/carrinho">
+            <i class="bi bi-cart-fill"></i> Carrinho
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Conteúdo da página -->
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3 mt-5">
+  <small>&copy; 2025 Estética Auto. Todos os direitos reservados.</small>
+</footer>
