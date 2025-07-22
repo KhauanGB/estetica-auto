@@ -1,41 +1,27 @@
 // src/app/services/auth.service.ts
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+interface LoginResponse {
+  id: number;
+  nome: string;
+  email: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly storageKey = 'usuarioLogado';
+  private apiUrl = 'http://localhost:3000/api/usuarios';
 
-  login(email: string, senha: string): boolean {
-    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
-    const usuario = usuarios.find((u: any) => u.email === email && u.senha === senha);
+  constructor(private http: HttpClient) {}
 
-    if (usuario) {
-      localStorage.setItem(this.storageKey, JSON.stringify(usuario));
-      return true;
-    }
-    return false;
+  login(email: string, senha: string): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, { email, senha });
   }
 
-  cadastrar(nome: string, email: string, senha: string): boolean {
-    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
-    if (usuarios.some((u: any) => u.email === email)) return false;
-
-    usuarios.push({ nome, email, senha });
-    localStorage.setItem('usuarios', JSON.stringify(usuarios));
-    return true;
-  }
-
-  logout() {
-    localStorage.removeItem(this.storageKey);
-  }
-
-  isLogado(): boolean {
-    return !!localStorage.getItem(this.storageKey);
-  }
-
-  getUsuarioLogado(): any {
-    return JSON.parse(localStorage.getItem(this.storageKey) || 'null');
+  cadastrar(nome: string, email: string, senha: string): Observable<any> {
+    return this.http.post(this.apiUrl, { nome, email, senha });
   }
 }

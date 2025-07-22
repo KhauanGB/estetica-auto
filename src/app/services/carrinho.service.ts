@@ -1,3 +1,4 @@
+// src/app/services/carrinho.service.ts
 import { Injectable } from '@angular/core';
 import { Produto } from '../models/produto.model';
 
@@ -5,25 +6,25 @@ import { Produto } from '../models/produto.model';
   providedIn: 'root'
 })
 export class CarrinhoService {
-  private itens: Produto[] = [];
+  private carrinho: Produto[] = [];
 
   adicionar(produto: Produto): void {
-    this.itens.push(produto);
+    this.carrinho.push(produto);
   }
 
   remover(index: number): void {
-    this.itens.splice(index, 1);
+    this.carrinho.splice(index, 1);
   }
 
   listar(): Produto[] {
-    return this.itens;
+    return this.carrinho;
   }
 
   limpar(): void {
-    this.itens = [];
+    this.carrinho = [];
   }
 
-  total(): number {
-    return this.itens.reduce((soma, item) => soma + item.preco, 0);
+  get total(): number {
+    return this.carrinho.reduce((soma, item) => soma + item.preco, 0);
   }
 }

@@ -7,7 +7,9 @@
       <div class="card-body d-flex flex-column">
         <h5 class="card-title">{{ produto.nome }}</h5>
         <p class="card-text">{{ produto.descricao }}</p>
-        <p class="card-text fw-bold text-success">R$ {{ produto.preco | number:'1.2-2' }}</p>
+        <p class="card-text fw-bold text-success">
+          R$ {{ produto.preco | number:'1.2-2' }}
+        </p>
         <div class="mt-auto d-flex justify-content-between">
           <button class="btn btn-outline-danger btn-sm" (click)="favoritar(produto)">
             <i class="bi bi-heart"></i>
@@ -15,7 +17,9 @@
           <button class="btn btn-outline-success btn-sm" (click)="adicionarAoCarrinho(produto)">
             <i class="bi bi-cart-plus"></i>
           </button>
-          <a class="btn btn-outline-primary btn-sm btn-info" [routerLink]="['/produtos', produto.id]">Detalhes</a>
+          <a [routerLink]="['/produtos', produto.id]" class="btn btn-outline-primary btn-sm">
+            <i class="bi bi-info-circle"></i>
+          </a>
         </div>
       </div>
     </div>

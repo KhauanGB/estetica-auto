@@ -1,57 +1,70 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-  <div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
     <a class="navbar-brand fw-bold" routerLink="/">Estética Auto</a>
+
     <button
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
+      data-bs-target="#navbarContent"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto gap-2">
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/">
-            <i class="bi bi-house-door-fill"></i> Home
-          </a>
+          <a class="nav-link" routerLink="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/produtos">
-            <i class="bi bi-box-seam"></i> Produtos
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/usuarios/novo">
-            <i class="bi bi-person-plus-fill"></i> Cadastro
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/favoritos">
-            <i class="bi bi-heart-fill"></i> Favoritos
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/carrinho">
-            <i class="bi bi-cart-fill"></i> Carrinho
-          </a>
+          <a class="nav-link" routerLink="/produtos">Produtos</a>
         </li>
       </ul>
+
+      <div class="d-flex gap-3 align-items-center">
+        <a class="text-decoration-none" routerLink="/login">
+          <i class="bi bi-box-arrow-in-right"></i> Login
+        </a>
+        <a class="text-decoration-none" routerLink="/cadastro">
+          <i class="bi bi-person-plus"></i> Registrar
+        </a>
+        <a class="text-decoration-none" routerLink="/buscar">
+          <i class="bi bi-search"></i>
+        </a>
+        <a class="text-decoration-none" routerLink="/carrinho">
+          <i class="bi bi-cart"></i>
+        </a>
+        <a class="text-decoration-none" routerLink="/favoritos">
+          <i class="bi bi-heart"></i>
+        </a>
+      </div>
     </div>
   </div>
 </nav>
 
-<!-- Conteúdo da página -->
-<div class="container mt-4">
-  <router-outlet></router-outlet>
-</div>
+<!-- Onde os componentes são renderizados -->
+<router-outlet></router-outlet>
 
 <!-- Footer -->
-<footer class="bg-dark text-white text-center py-3 mt-5">
-  <small>&copy; 2025 Estética Auto. Todos os direitos reservados.</small>
+<footer class="bg-primary text-white mt-5 p-4">
+  <div class="container d-flex flex-column flex-md-row justify-content-between">
+    <div>
+      <h5>Acesse</h5>
+      <p>Visite nossas redes sociais</p>
+      <div class="d-flex gap-3 fs-4">
+        <i class="bi bi-facebook"></i>
+        <i class="bi bi-instagram"></i>
+        <i class="bi bi-twitter"></i>
+      </div>
+    </div>
+    <div>
+      <h5>Sobre nós</h5>
+      <p>Endereço</p>
+      <p>Contato</p>
+    </div>
+  </div>
+  <div class="text-center mt-3">
+    © 2025 Estética Auto. Todos os direitos reservados.
+  </div>
 </footer>

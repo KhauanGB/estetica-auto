@@ -1,11 +1,15 @@
-<div *ngIf="produto">
-  <h2>{{ produto.nome }}</h2>
+<div *ngIf="produto" class="card p-4 shadow-sm">
+  <h2 class="mb-3">{{ produto.nome }}</h2>
+  <img src="https://via.placeholder.com/600x300" class="img-fluid mb-3" alt="Imagem do Produto" />
   <p><strong>Descrição:</strong> {{ produto.descricao }}</p>
-  <p><strong>Preço:</strong> R$ {{ produto.preco | number: '1.2-2' }}</p>
-  <button class="btn btn-primary">Adicionar ao Carrinho</button>
-  <button class="btn btn-outline-danger ms-2">Favoritar</button>
-</div>
+  <p><strong>Preço:</strong> R$ {{ produto.preco | number:'1.2-2' }}</p>
 
-<div *ngIf="!produto">
-  <p>Produto não encontrado.</p>
+  <div class="mt-3">
+    <button class="btn btn-outline-danger me-2">
+      <i class="bi bi-heart"></i> Favoritar
+    </button>
+    <button class="btn btn-outline-success">
+      <i class="bi bi-cart-plus"></i> Adicionar ao Carrinho
+    </button>
+  </div>
 </div>

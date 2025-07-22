@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Produto } from '../../models/produto.model';
 import { ProdutoService } from '../../services/produto.service';
-import { FavoritoService } from '../../services/favorito.service';
+import { FavoritosService } from '../../services/favoritos.service';
 import { CarrinhoService } from '../../services/carrinho.service';
 import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -12,14 +13,14 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-listar-produto',
   templateUrl: './listar-produto.component.html',
   styleUrls: ['./listar-produto.component.css'] ,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
 })
 export class ListarProdutoComponent implements OnInit {
   produtos: Produto[] = [];
 
   constructor(
     private produtoService: ProdutoService,
-    private favoritoService: FavoritoService,
+    private favoritoService: FavoritosService,
     private carrinhoService: CarrinhoService,
     private router: Router
   ) {}

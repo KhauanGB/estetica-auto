@@ -1,7 +1,8 @@
+
 export interface Produto {
   id: number;
   nome: string;
   descricao: string;
   preco: number;
-  favorito?: boolean;
+  imagemUrl?: string; // Opcional: caso queira usar imagens reais depois
 }

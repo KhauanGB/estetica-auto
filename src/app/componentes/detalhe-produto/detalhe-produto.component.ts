@@ -1,15 +1,14 @@
-// src/app/componentes/detalhe-produto/detalhe-produto.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Produto, ProdutoService } from '../../services/produto.service';
+import { ProdutoService } from '../../services/produto.service';
+import { Produto } from '../../models/produto.model';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-detalhe-produto',
   templateUrl: './detalhe-produto.component.html',
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule],
 })
 export class DetalheProdutoComponent implements OnInit {
   produto?: Produto;
@@ -19,7 +18,7 @@ export class DetalheProdutoComponent implements OnInit {
     private produtoService: ProdutoService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.produto = this.produtoService.buscarPorId(id);
   }
