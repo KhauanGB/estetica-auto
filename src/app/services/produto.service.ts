@@ -6,9 +6,27 @@ import { Produto } from '../models/produto.model';
 })
 export class ProdutoService {
   private produtos: Produto[] = [
-    { id: 1, nome: 'Shampoo Automotivo', descricao: 'Limpa e dá brilho', preco: 29.90 },
-    { id: 2, nome: 'Cera Protetora', descricao: 'Protege e dá brilho', preco: 45.50 },
-    { id: 3, nome: 'Limpa Vidros', descricao: 'Remove manchas sem esforço', preco: 19.99 }
+    {
+      id: 1,
+      nome: 'Shampoo Automotivo',
+      descricao: 'Limpa e dá brilho',
+      preco: 29.90,
+      imagem: 'assets/img/shampoo.webp'
+    },
+    {
+      id: 2,
+      nome: 'Cera Protetora',
+      descricao: 'Protege e dá brilho',
+      preco: 45.50,
+      imagem: 'assets/img/cera.webp'
+    },
+    {
+      id: 3,
+      nome: 'Limpa Vidros',
+      descricao: 'Remove manchas sem esforço',
+      preco: 19.99,
+      imagem: 'assets/img/vidro.webp'
+    }
   ];
 
   listar(): Produto[] {

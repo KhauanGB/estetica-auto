@@ -1,33 +1,38 @@
 // src/app/componentes/login/login.component.ts
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
   standalone: true,
-  imports: [ CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, RouterModule],
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  email = '';
-  senha = '';
-  erro = '';
+  usuario = {
+    email: '',
+    senha: ''
+  };
+
+  mensagem: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  login() {
-    this.authService.login(this.email, this.senha).subscribe({
+  login(): void {
+    const { email, senha } = this.usuario;
+
+    this.authService.login(email, senha).subscribe({
       next: (res) => {
-        console.log('Login com sucesso:', res);
-        localStorage.setItem('usuario', JSON.stringify(res));
-        this.router.navigate(['/']);
+        console.log('Login bem-sucedido:', res);
+        this.mensagem = '';
+        this.router.navigate(['/home']);
       },
       error: (err) => {
-        console.error(err);
-        this.erro = 'Email ou senha inválidos';
+        this.mensagem = err.error?.erro || 'Erro ao fazer login';
       }
     });
   }

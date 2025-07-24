@@ -1,8 +1,7 @@
-// src/app/componentes/cadastro-usuario/cadastro-usuario.component.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -21,18 +20,21 @@ export class CadastroUsuarioComponent {
 
   mensagem: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   cadastrar(): void {
-    const { nome, email, senha } = this.usuario;
-
-    this.authService.cadastrar(nome, email, senha).subscribe({
+    this.authService.cadastrar(this.usuario).subscribe({
       next: () => {
-        this.mensagem = 'Usuário cadastrado com sucesso!';
+        this.mensagem = ' Usuário cadastrado com sucesso!';
         this.usuario = { nome: '', email: '', senha: '' };
+
+        
       },
       error: (err) => {
-        this.mensagem = err.error?.erro || 'Erro ao cadastrar usuário';
+        this.mensagem = err.error?.erro || ' Erro ao cadastrar usuário';
       }
     });
   }
